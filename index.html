@@ -266,12 +266,6 @@ document.querySelectorAll('#nav-links a').forEach(link => {
   link.addEventListener('click', () => nav.classList.remove('open'));
 });
 
-document.querySelector('#contact-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const message = document.querySelector('#form-message');
-  message.textContent = "Thanks! Your enquiry is ready to send — connect this form to your email service before going live.";
-});
-
   </script>
 </body>
 </html>
