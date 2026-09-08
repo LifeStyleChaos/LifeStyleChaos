@@ -239,35 +239,71 @@ footer .logo { color:white; }
       <p>Tell me what you need help with. No complicated forms, no pressure — just a conversation.</p>
     </div>
 
-    <form id="contact-form" action="https://formsubmit.co/lifestylechaos2@gmail.com" method="POST">
+    <form id="contact-form">
+  <input type="hidden" name="_subject" value="New LifeStyleChaos Enquiry">
+  <input type="hidden" name="_template" value="table">
 
-      <!-- Email settings -->
-      <input type="hidden" name="_subject" value="New LifeStyleChaos Enquiry">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
+  <label>
+    Name
+    <input type="text" name="name" required placeholder="Your name">
+  </label>
 
-      <label>
-        Name
-        <input type="text" name="name" required placeholder="Your name">
-      </label>
+  <label>
+    Email
+    <input type="email" name="email" required placeholder="you@example.com">
+  </label>
 
-      <label>
-        Email
-        <input type="email" name="email" required placeholder="you@example.com">
-      </label>
+  <label>
+    What can I help with?
+    <textarea name="message" required placeholder="Tell me what's on your to-do list..."></textarea>
+  </label>
 
-      <label>
-        What can I help with?
-        <textarea name="message" required placeholder="Tell me what's on your to-do list..."></textarea>
-      </label>
+  <button class="button primary" type="submit">Send Enquiry</button>
 
-      <button class="button primary" type="submit">Send Enquiry</button>
+  <p id="form-message" class="form-message"></p>
+</form>
 
-      <p id="form-message" class="form-message"></p>
-    </form>
-  </div>
-</section>
+<script>
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
+  const form = this;
+  const button = form.querySelector("button");
+  const message = document.getElementById("form-message");
+
+  button.disabled = true;
+  button.textContent = "Sending...";
+  message.textContent = "";
+
+  try {
+    const response = await fetch(
+      "https://formsubmit.co/ajax/lifestylechaos2@gmail.com",
+      {
+        method: "POST",
+        headers: {
+          "Accept": "application/json"
+        },
+        body: new FormData(form)
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+      message.textContent = "Thank you! Your enquiry has been sent.";
+      form.reset();
+    } else {
+      message.textContent = "Sorry, something went wrong. Please try again.";
+    }
+
+  } catch (error) {
+    message.textContent = "Sorry, something went wrong. Please try again.";
+  }
+
+  button.disabled = false;
+  button.textContent = "Send Enquiry";
+});
+</script>
   <footer>
     <div class="container footer-inner">
       <div class="logo">LifeStyle<span>Chaos</span></div>
