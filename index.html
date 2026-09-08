@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LifeStyleChaos — practical virtual assistant support for busy lives and growing businesses.">
+  <title>LifeStyleChaos | Virtual Assistant Services</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+
+:root {
+  --ink: #20201e;
+  --muted: #696762;
+  --cream: #f8f5ee;
+  --paper: #fffdf8;
+  --pink: #e9a6a8;
+  --yellow: #f2d77b;
+  --green: #a9c6ad;
+  --line: #ded9ce;
+  --radius: 24px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; color:var(--ink); background:var(--paper); font-family:'DM Sans',sans-serif; line-height:1.65; }
+.container { width:min(1120px, 90%); margin:auto; }
+.site-header { position:sticky; top:0; z-index:20; background:rgba(255,253,248,.93); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+.nav { height:78px; display:flex; align-items:center; justify-content:space-between; }
+.logo { font-weight:800; font-size:1.45rem; letter-spacing:-.06em; text-decoration:none; color:var(--ink); }
+.logo span { font-family:'Playfair Display',serif; font-style:italic; font-weight:600; }
+nav { display:flex; align-items:center; gap:30px; }
+nav a { color:var(--ink); text-decoration:none; font-weight:600; font-size:.92rem; }
+.nav-cta { padding:11px 19px; border-radius:999px; background:var(--ink); color:white; }
+.menu-btn { display:none; border:0; background:none; font-size:1.5rem; }
+.hero { background:var(--cream); padding:95px 0 85px; overflow:hidden; }
+.hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:75px; align-items:center; }
+.eyebrow { font-size:.76rem; letter-spacing:.18em; font-weight:800; margin:0 0 14px; }
+h1,h2,h3 { line-height:1.08; margin-top:0; }
+h1 { font-size:clamp(3.5rem,7vw,6.3rem); letter-spacing:-.065em; margin-bottom:25px; }
+h1 em, h2 em { font-family:'Playfair Display',serif; font-weight:600; }
+.hero-copy { max-width:610px; font-size:1.14rem; color:var(--muted); }
+.hero-buttons { display:flex; gap:12px; flex-wrap:wrap; margin:30px 0; }
+.button { display:inline-block; border:0; cursor:pointer; text-decoration:none; padding:14px 22px; border-radius:999px; font:700 .95rem 'DM Sans',sans-serif; }
+.primary { background:var(--ink); color:white; }
+.secondary { border:1px solid var(--ink); color:var(--ink); background:transparent; }
+.trust-row { display:flex; gap:20px; flex-wrap:wrap; color:var(--muted); font-size:.82rem; }
+.hero-card { background:var(--paper); border:1px solid var(--line); border-radius:28px; padding:28px; box-shadow:12px 16px 0 var(--yellow); transform:rotate(1.5deg); }
+.card-top { display:flex; justify-content:space-between; margin-bottom:25px; font-weight:800; }
+.status { font-size:.75rem; }
+.task { border-top:1px solid var(--line); padding:17px 0; font-weight:600; }
+.task span { display:inline-flex; width:26px; height:26px; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:50%; margin-right:10px; }
+.task.done { color:#777; text-decoration:line-through; }
+.mini-note { margin-top:18px; padding:15px; background:var(--green); border-radius:14px; font-size:.86rem; font-weight:600; }
+.section { padding:100px 0; }
+.section-heading { max-width:700px; margin-bottom:48px; }
+h2 { font-size:clamp(2.4rem,5vw,4.3rem); letter-spacing:-.055em; margin-bottom:15px; }
+.section-heading p:last-child { color:var(--muted); font-size:1.05rem; }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.service { border:1px solid var(--line); padding:30px; border-radius:var(--radius); min-height:245px; background:var(--paper); transition:.2s ease; }
+.service:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,.06); }
+.service.highlight { background:var(--yellow); border-color:transparent; }
+.icon { font-size:1.6rem; margin-bottom:22px; }
+.service h3 { font-size:1.35rem; }
+.service p { color:var(--muted); margin:0; }
+.about { background:var(--cream); }
+.about-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:80px; align-items:center; }
+.about-art { min-height:430px; border-radius:35px; background:var(--pink); display:grid; place-items:center; transform:rotate(-2deg); }
+.scribble { font-family:'Playfair Display',serif; font-size:4.3rem; line-height:.9; text-align:center; font-weight:700; transform:rotate(5deg); }
+.scribble span { font-family:'DM Sans',sans-serif; font-size:3rem; }
+.about p { color:var(--muted); font-size:1.05rem; }
+.text-link { color:var(--ink); font-weight:800; text-decoration:underline; text-underline-offset:5px; }
+.how { background:var(--green); }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.step { background:rgba(255,255,255,.45); padding:30px; border-radius:var(--radius); }
+.step b { font-size:.8rem; letter-spacing:.15em; }
+.step h3 { margin:25px 0 8px; font-size:1.45rem; }
+.step p { margin:0; }
+.contact { background:var(--ink); color:white; }
+.contact-box { display:grid; grid-template-columns:.9fr 1.1fr; gap:80px; align-items:start; }
+.contact-box p:not(.eyebrow) { color:#c7c5be; max-width:500px; }
+form { display:grid; gap:17px; }
+label { font-size:.83rem; font-weight:700; display:grid; gap:7px; }
+input,textarea { width:100%; border:1px solid #55534e; border-radius:12px; background:#2b2b29; color:white; padding:14px; font:inherit; outline:none; }
+input:focus,textarea:focus { border-color:white; }
+textarea { min-height:130px; resize:vertical; }
+form .primary { background:white; color:var(--ink); justify-self:start; }
+.form-message { margin:0; font-size:.9rem; }
+footer { padding:30px 0; background:#171716; color:#aaa79f; }
+.footer-inner { display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; font-size:.8rem; }
+footer .logo { color:white; }
+@media (max-width:800px) {
+  .menu-btn { display:block; }
+  nav { display:none; position:absolute; top:78px; left:0; right:0; padding:20px 5%; background:var(--paper); flex-direction:column; align-items:stretch; border-bottom:1px solid var(--line); }
+  nav.open { display:flex; }
+  .hero-grid,.about-grid,.contact-box { grid-template-columns:1fr; gap:45px; }
+  .services-grid,.steps { grid-template-columns:1fr; }
+  .hero { padding:65px 0; }
+  .hero-card { max-width:520px; }
+  .section { padding:70px 0; }
+  .about-art { min-height:300px; }
+  .scribble { font-size:3.4rem; }
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home">LifeStyle<span>Chaos</span></a>
+      <button class="menu-btn" aria-label="Open menu">☰</button>
+      <nav id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#how">How It Works</a>
+        <a href="#contact" class="nav-cta">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">VIRTUAL ASSISTANT SUPPORT</p>
+          <h1>Your chaos.<br><em>My organisation.</em></h1>
+          <p class="hero-copy">
+            LifeStyleChaos helps busy people and small businesses get organised,
+            save time and finally get those jobs off the never-ending to-do list.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="button primary">Let's Get Organised</a>
+            <a href="#services" class="button secondary">Explore Services</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Flexible support</span>
+            <span>✓ Personal service</span>
+            <span>✓ No long contracts</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-top">
+            <span>Today's mission</span>
+            <span class="status">● On it</span>
+          </div>
+          <div class="task done"><span>✓</span> Clear overflowing inbox</div>
+          <div class="task done"><span>✓</span> Organise appointments</div>
+          <div class="task"><span>○</span> Prepare weekly admin</div>
+          <div class="task"><span>○</span> Tackle the to-do list</div>
+          <div class="mini-note">You focus on what matters. I'll handle the chaos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">WHAT I CAN DO</p>
+          <h2>Less chaos. More time.</h2>
+          <p>Practical virtual assistance tailored around the way you actually work.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service">
+            <div class="icon">✦</div>
+            <h3>Admin & Organisation</h3>
+            <p>Inbox management, documents, data entry, filing, spreadsheets and the everyday admin that keeps piling up.</p>
+          </article>
+          <article class="service">
+            <div class="icon">♡</div>
+            <h3>Personal VA Support</h3>
+            <p>Appointments, research, bookings, reminders, lists and life admin — because your time matters too.</p>
+          </article>
+          <article class="service">
+            <div class="icon">↗</div>
+            <h3>Business Support</h3>
+            <p>Customer communication, scheduling, basic operations support and the behind-the-scenes jobs your business needs.</p>
+          </article>
+          <article class="service">
+            <div class="icon">◎</div>
+            <h3>Social Media Help</h3>
+            <p>Content planning, captions, scheduling and simple social media admin to keep your online presence moving.</p>
+          </article>
+          <article class="service">
+            <div class="icon">✓</div>
+            <h3>Research & Projects</h3>
+            <p>Need something found, compared, organised or turned into a clear plan? I'll take the research off your plate.</p>
+          </article>
+          <article class="service highlight">
+            <div class="icon">⚡</div>
+            <h3>Something Else?</h3>
+            <p>If it's legal, ethical and within my skill set, ask. LifeStyleChaos is built around finding practical solutions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about section">
+      <div class="container about-grid">
+        <div class="about-art">
+          <div class="scribble">CHAOS<br><span>→</span><br>CONTROL</div>
+        </div>
+        <div>
+          <p class="eyebrow">WHY LIFESTYLECHAOS?</p>
+          <h2>Because life doesn't come with an admin department.</h2>
+          <p>
+            LifeStyleChaos was created for people who have too much to do and
+            not enough hours in the day. Whether you're running a business,
+            juggling family life or simply drowning in admin, having someone
+            reliable in your corner can make a huge difference.
+          </p>
+          <p>
+            Think of me as the extra pair of hands you wish you had — friendly,
+            practical and focused on getting things done.
+          </p>
+          <a href="#contact" class="text-link">Tell me what's causing the chaos →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section how">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">SIMPLE PROCESS</p>
+          <h2>From “I can't keep up” to “that's sorted.”</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><b>01</b><h3>Tell me the chaos</h3><p>Send me a message and tell me what you need help with.</p></div>
+          <div class="step"><b>02</b><h3>We make a plan</h3><p>We'll work out what needs doing and the best way to tackle it.</p></div>
+          <div class="step"><b>03</b><h3>I get it done</h3><p>You get your time back while I get stuck into the jobs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section">
+      <div class="container contact-box">
+        <div>
+          <p class="eyebrow">READY?</p>
+          <h2>Let's tame the chaos.</h2>
+          <p>Tell me what you need help with. No complicated forms, no pressure — just a conversation.</p>
+        </div>
+        <form id="contact-form">
+          <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+          <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+          <label>What can I help with?<textarea name="message" required placeholder="Tell me what's on your to-do list..."></textarea></label>
+          <button class="button primary" type="submit">Send Enquiry</button>
+          <p id="form-message" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo">LifeStyle<span>Chaos</span></div>
+      <p>Virtual assistance for real life.</p>
+      <p>© 2026 LifeStyleChaos. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+const menuBtn = document.querySelector('.menu-btn');
+const nav = document.querySelector('#nav-links');
+menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+
+document.querySelectorAll('#nav-links a').forEach(link => {
+  link.addEventListener('click', () => nav.classList.remove('open'));
+});
+
+document.querySelector('#contact-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const message = document.querySelector('#form-message');
+  message.textContent = "Thanks! Your enquiry is ready to send — connect this form to your email service before going live.";
+});
+
+  </script>
+</body>
+</html>
